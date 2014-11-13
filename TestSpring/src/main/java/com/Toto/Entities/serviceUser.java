@@ -1,6 +1,7 @@
 package com.Toto.Entities;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +25,20 @@ public class serviceUser {
 		userDao.addUser(u);
 	}
 	
+	public void update(user u)
+	{
+		userDao.updateUser(u);
+	}
+	
+	public void remove(user u)
+	{
+		userDao.remove(u);
+	}
+	
+	public List<user> rechercher(Map<String,Object> Props)
+	{
+		return userDao.getUsersByAttributes(Props);
+	}
 	public List<user> afficher()
 	{
 		return userDao.getAllUsers();

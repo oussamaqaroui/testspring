@@ -1,16 +1,16 @@
 package com.Toto.Entities;
 
-import java.util.List;
+import static org.junit.Assert.*;
+
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.junit.AfterClass;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
-
-public class testBase {
+public class test3 {
 
 	public static ClassPathXmlApplicationContext context ;
 	public static serviceUser serviceUser ;
@@ -25,20 +25,22 @@ public class testBase {
 		context.close();
 	}
 
-	
 	@Test
-	public void testAjouter() {
+	public void testRemove() {
 		user user = new user();
-		user.setNom("blabla");
+		user.setId(1);
+		user.setNom("guizlane");
 		user.setPrenom("amal");
-		serviceUser.ajouter(user);
-		System.out.println("User  : " + user + " added successfully");
+		
+		serviceUser.remove(user);
+		
 	}
 
 	@Test
-	public void testAfficher() {
-		List<user> users = serviceUser.afficher();
-		System.out.println("The list of all persons = " + users);
+	public void testRechercher() {
+		Map<String,Object> M=new TreeMap<String,Object>();
+		M.put("nom", "ouss");
+		System.out.println(serviceUser.rechercher(M));
 	}
 
 }
